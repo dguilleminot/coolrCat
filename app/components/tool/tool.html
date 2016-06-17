@@ -1,0 +1,58 @@
+<section>
+  <!-- <h1>color cat<img widt="40" height="40" src="lib/img/logo.png"/></h1> -->
+  <div id="canvasGroup" class="canvas-group">
+    <a class="btn btn-default flex align-center justify-center" ng-init="modifySin()" ng-click="addAnotherPin()">
+      <i class="fa fa-plus"></i>
+    </a>
+    <canvas id="colorSpectre" class="color-spectre" ng-init="initCanvas()"></canvas>
+    <canvas id="colorCourbe" class="color-courbe"></canvas>
+    <canvas id="colorPins" class="color-pins"></canvas>
+  </div>
+
+  <img id="spectre" src="lib/img/spectre.png"/>
+
+  <section class="control-section flex justify-center align-center">
+    <div class="w50" class="flex justify-around">
+      <label class="m-s">amp :</label>
+      <input ng-model="amplitude" type="number" max="100" min="-100" step="1" ng-change="modifySin()"/>
+      <input class="w50 inlineblock" ng-model="amplitude" type="range" value="100" max="100" min="-100" step="1" ng-change="modifySin()">
+    </div>
+    <div class="w50" class="flex justify-around">
+      <label class="m-s">etd :</label>
+      <input ng-model="etendu" type="number" max=".4" min="0" step=".001" ng-change="modifySin()"/>
+      <input class="w50 inlineblock" ng-model="etendu" type="range" max=".4" min="0" step=".001" ng-change="modifySin()">
+    </div>
+  </section>
+
+  <ul id="pinArray"  dnd-list="pin">
+    <li class="flex align-center justify-between" ng-repeat="p in pin"
+        dnd-draggable="p"
+        dnd-moved="pin.splice($index, 1)"
+        dnd-effect-allowed="move"
+        dnd-selected="models.selected = p"
+        ng-class="{'selected': models.selected === p}"
+       style="background: rgb( {{p.rgb.r}} ,{{p.rgb.g}},{{p.rgb.b}});"
+          dnd-draggable="p"
+          dnd-moved="pin.splice($index, 1)"
+          dnd-effect-allowed="move"
+          dnd-selected="models = item"
+          ng-class="{'selected': models === item}"
+        >
+      <p class="m-s">{{$index+1}}</p>
+      <p>
+        position : <input type="number" ng-model="p.pourcent" step=".5" ng-change="changePinPosition(p)" max="100" min="0"/> %
+      </p>
+      <ul class="flex">
+        <li class="">rgb(</li>
+        <li class=""><span ng-bind="p.rgb.r"></span>,</li>
+        <li class=""><span ng-bind="p.rgb.g"></span>,</li>
+        <li class=""><span ng-bind="p.rgb.b"></span></li>
+        <li class="">)</li>
+      </ul>
+      <a class="w10 m-s" ng-click="removePin($index)">
+        <i class="fa fa-minus"></i>
+      </a>
+    </li>
+  </ul>
+
+</section>

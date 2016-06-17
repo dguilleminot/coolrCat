@@ -1,0 +1,25 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<base href="">
+	<title>Coolr Cat</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<!-- CSS -->
+	<link media="all" rel="stylesheet" href="lib/css/style.css"> <!-- custom styles -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+	<!-- JS -->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+	<!-- ANGULAR JS -->
+	<script src="app/modules/angular.min.js"></script>
+	<script src="app/components/tool/toolCtrl.js"></script>
+	<script src="app/components/tool/toolDir.js"></script>
+	<script src="app/modules/angular-drag-and-drop-lists.min.js"></script>
+	<!-- ANGULAR MAIN -->
+	<script src="app/app.js"></script>
+</head>
+<body ng-app="app" class="flex bgd-dark-gray">
+	  <!-- ANGULAR DYNAMIC CONTENT -->
+		<div class="view-container p-s animated ng-anim-end" tool-dir></div>
+</body>
+</html>
